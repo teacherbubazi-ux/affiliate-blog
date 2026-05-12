@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin</title>
 
-  <!-- Identity -->
+  <!-- Identity (must stay) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- IMPORTANT: stable Decap CMS build -->
+  <!-- IMPORTANT: use stable pinned version -->
   <script src="https://unpkg.com/decap-cms@3.13.0/dist/decap-cms.js"></script>
 </head>
 
 <body>
+  <!-- REQUIRED ROOT (Decap actually expects THIS ID) -->
   <div id="nc-root"></div>
 </body>
 </html>
