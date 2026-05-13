@@ -5,15 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin</title>
 
-  <!-- Identity (must stay) -->
+  <!-- Load Identity FIRST -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- IMPORTANT: use stable pinned version -->
+  <!-- Load CMS -->
   <script src="https://unpkg.com/decap-cms@3.13.0/dist/decap-cms.js"></script>
 </head>
 
 <body>
-  <!-- REQUIRED ROOT (Decap actually expects THIS ID) -->
+
+  <!-- IMPORTANT: correct mount point -->
   <div id="nc-root"></div>
+
+  <script>
+    // Fix identity timing issue
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+
+    // Force CMS init safety (CRITICAL FIX)
+    if (window.CMS) {
+      window.CMS.init();
+    }
+  </script>
+
 </body>
 </html>
