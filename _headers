@@ -1,0 +1,6 @@
+/admin/config.yml
+  Content-Type: text/yaml
+  Cache-Control: no-cache
+
+/admin/*
+  Content-Type: text/html
